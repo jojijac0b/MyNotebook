@@ -4,4 +4,9 @@ textarea {
   font-size: 18px;
   width: 100%;
   height: 100%;
+  border: none;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 20px;
+  border-top: solid;
+  border-color: #e5e5e5;
 }

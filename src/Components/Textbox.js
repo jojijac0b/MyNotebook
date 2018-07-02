@@ -10,7 +10,7 @@ class Textbox extends Component {
   render(){
     return (
       <div>
-        <textarea rows="21" cols="80" placeholder="Enter text..." value={this.props.text} onChange={this.onChange} />
+        <textarea rows="20" cols="80" placeholder="Enter text..." value={this.props.text} onChange={this.onChange} />
       </div>
     )
   }
