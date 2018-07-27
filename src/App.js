@@ -5,7 +5,7 @@ import Textbox from './Components/Textbox.js';
 class App extends Component {
 
   componentWillMount() {
-      document.addEventListener("keydown", this.onKeyPressed.bind(this));
+      document.addEventListener("keydown", this.onTabPressed.bind(this));
   }
 
   componentDidMount(){
@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-      document.removeEventListener("keydown", this.onKeyPressed.bind(this));
+      document.removeEventListener("keydown", this.onTabPressed.bind(this));
   }
 
   state = {
@@ -29,10 +29,17 @@ class App extends Component {
     localStorage.setItem('myNotebookText', JSON.stringify(text));
   }
 
-  onKeyPressed(e) {
+  onTabPressed(e) {
     if(e.keyCode === 9){
       e.preventDefault();
-      this.setText(this.state.text + '   ');
+      var start = e.target.selectionStart;
+      var end = e.target.selectionEnd;
+
+      this.setText(this.state.text.substring(0, start)
+                    + "\t"
+                    + this.state.text.substring(end));
+
+      e.target.selectionStart = e.target.selectionEnd = start + 1;
     }
   }
 
